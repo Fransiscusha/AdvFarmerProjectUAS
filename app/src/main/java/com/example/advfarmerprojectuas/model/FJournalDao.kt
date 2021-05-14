@@ -15,4 +15,10 @@ interface FJournalDao {
 
     @Query("UPDATE user SET nama=:nama, umur=:umur, gender=:gender, weight=:weight, height=:height WHERE uuid=:uuid")
     suspend fun updateUserProfile(nama:String, umur:Int, gender:String, weight:Int, height:Int, uuid:Int)
+
+    @Query("SELECT * FROM log WHERE tanggal= :tanggal")
+    suspend fun selectLog(tanggal:String):List<Log>
+
+    @Query("SELECT SUM(kalori) FROM log WHERE tanggal= :tanggal")
+    suspend fun  getCurrentCalories(tanggal: String): Int
 }

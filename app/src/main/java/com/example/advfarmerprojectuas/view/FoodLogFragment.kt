@@ -9,15 +9,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.advfarmerprojectuas.R
+import com.example.advfarmerprojectuas.databinding.FoodlogItemBinding
 import com.example.advfarmerprojectuas.databinding.FragmentFoodLogBinding
 import com.example.advfarmerprojectuas.viewmodel.LogViewModel
 import com.example.advfarmerprojectuas.viewmodel.UserViewModel
+import kotlinx.android.synthetic.main.fragment_food_log.*
+import kotlin.math.log
 
 class FoodLogFragment : Fragment(), LogAMealListener {
     private lateinit var userViewModel:UserViewModel
     private lateinit var logViewModel:LogViewModel
     private lateinit var dataBinding:FragmentFoodLogBinding
+    private var foodLogListAdapter: FoodLogListAdapter = FoodLogListAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,12 +41,21 @@ class FoodLogFragment : Fragment(), LogAMealListener {
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.fetchUser()
 
+        logViewModel = ViewModelProvider(this).get(LogViewModel::class.java)
+        logViewModel.fetchLog()
+
+        recViewLog.layoutManager = LinearLayoutManager(context)
+        recViewLog.adapter = foodLogListAdapter
+
         observeViewModel()
     }
 
     fun observeViewModel(){
         userViewModel.userLD.observe(viewLifecycleOwner, Observer {
             dataBinding.user = it
+        })
+        logViewModel.logLD.observe(viewLifecycleOwner, Observer {
+            foodLogListAdapter.updateLogList(it)
         })
     }
 
