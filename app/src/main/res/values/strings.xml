@@ -2,4 +2,14 @@
     <string name="app_name">AdvFarmerProjectUAS</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="foodloguserdetails">Gender, 00 years old</string>
+    <string name="foodlogusername">User Name</string>
+    <string name="foodlogdate">Day Month Year</string>
+    <string name="foodlogdailyenergyintake">Daily Energy Intake</string>
+    <string name="foodlogstatustitle">Status</string>
+    <string name="foodlogcalories">000 Cal</string>
+    <string name="foodlogstatus">STATUS</string>
+    <string name="foodlogcalprogress">0 Cal</string>
+    <string name="foodlogcaltarget">0000 Cal</string>
+    <string name="foodlog">Food Log</string>
 </resources>
