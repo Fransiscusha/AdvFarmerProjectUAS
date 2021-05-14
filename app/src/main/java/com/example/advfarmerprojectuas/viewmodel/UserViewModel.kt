@@ -1,6 +1,7 @@
 package com.example.advfarmerprojectuas.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.advfarmerprojectuas.model.User
@@ -13,6 +14,7 @@ import kotlin.coroutines.CoroutineContext
 
 class UserViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
     val userLD = MutableLiveData<User>()
+    val welcomeLD = MutableLiveData<Boolean>()
     private var job = Job()
 
     fun addUser(user: User){
@@ -26,6 +28,18 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
         launch {
             val db = buildDB(getApplication())
             userLD.value = db.FJournalDao().selectUser()
+        }
+    }
+
+    fun welcomeUserCheck() {
+        launch {
+            val db = buildDB(getApplication())
+            userLD.value = db.FJournalDao().selectUser()
+            if (userLD.value == null) {
+                welcomeLD.value = true
+            } else {
+                welcomeLD.value = false
+            }
         }
     }
 
