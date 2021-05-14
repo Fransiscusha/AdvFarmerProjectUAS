@@ -20,3 +20,8 @@ fun dateFormat():String{
     val sdf = SimpleDateFormat("MMMM yyyy",Locale.getDefault())
     return sdf.format(Date())
 }
+
+fun getCurrentDate():String{
+    val getCurrentDate = SimpleDateFormat("dd MMMM yyyy").format(Date())
+    return getCurrentDate
+}

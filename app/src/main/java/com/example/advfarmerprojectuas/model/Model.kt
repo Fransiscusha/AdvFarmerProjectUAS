@@ -2,6 +2,8 @@ package com.example.advfarmerprojectuas.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Entity
 data class User(
@@ -11,7 +13,7 @@ data class User(
     var weight:Int,
     var height:Int,
     var pgoal:String,
-    var target: Double,
+    var target: Int,
 ){
     @PrimaryKey(autoGenerate = true)
     var uuid:Int = 0
