@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="date"
+        type="com.example.advfarmerprojectuas.util.UtilKt" />
+</data>
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ReportFragment">
@@ -52,7 +58,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/reportBulan"
+            android:text="@{date.dateFormat()}"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,9 +86,10 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@color/design_default_color_on_primary"
-                android:elevation="2dp" />
+                android:background="@color/design_default_color_on_primary" />
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
+
+</layout>

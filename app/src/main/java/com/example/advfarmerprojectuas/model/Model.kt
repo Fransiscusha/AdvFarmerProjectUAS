@@ -26,3 +26,10 @@ data class Log(
     @PrimaryKey(autoGenerate = true)
     var uuid:Int = 0
 }
+
+data class Report(
+    var tanggal:String?,
+    var jMeal:Int?,
+    var jCal : Double?,
+    var status: String?,
+)
