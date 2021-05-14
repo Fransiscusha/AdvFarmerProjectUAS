@@ -2,6 +2,22 @@
     <string name="app_name">AdvFarmerProjectUAS</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcomename">Name</string>
+    <string name="welcomeage">Age</string>
+    <string name="welcomeweight">Weight</string>
+    <string name="welcomeheight">Height</string>
+    <string name="welcomepgoal">Personal Goal</string>
+    <string name="maintain">Maintain Weight</string>
+    <string name="gain">Gain Weight</string>
+    <string name="loss">Loss Weight</string>
+    <string name="startjourney">Start The Journey</string>
+    <string name="date">Date</string>
+    <string name="calories">cal</string>
+    <string name="need">needed for today</string>
+    <string name="whatfood">What you Eat?</string>
+    <string name="calorieadd">Calorie Approx</string>
+    <string name="logmeal">Log This Meal</string>
     <string name="foodloguserdetails">Gender, 00 years old</string>
     <string name="foodlogusername">User Name</string>
     <string name="foodlogdate">Day Month Year</string>
