@@ -13,4 +13,6 @@ interface FJournalDao {
     @Query("SELECT * FROM user LIMIT 1")
     suspend fun selectUser():User
 
+    @Query("UPDATE user SET nama=:nama, umur=:umur, gender=:gender, weight=:weight, height=:height WHERE uuid=:uuid")
+    suspend fun updateUserProfile(nama:String, umur:Int, gender:String, weight:Int, height:Int, uuid:Int)
 }

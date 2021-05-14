@@ -33,6 +33,8 @@ class ProfileFragment : Fragment(), UserSaveProfileListener {
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         viewModel.fetchUser()
 
+        dataBinding.listener = this
+
         observeViewModel()
     }
 
@@ -43,6 +45,6 @@ class ProfileFragment : Fragment(), UserSaveProfileListener {
     }
 
     override fun onUserSaveProfile(v: View, obj: User) {
-        TODO("Not yet implemented")
+        viewModel.updateUserProfile(obj.nama, obj.umur, obj.gender, obj.weight, obj.height, obj.uuid)
     }
 }
