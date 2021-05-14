@@ -16,6 +16,8 @@ import kotlin.coroutines.CoroutineContext
 class LogViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
     val logLD = MutableLiveData<List<Log>>()
     val currentCaloriesLD = MutableLiveData<Int>()
+    val statusLD = MutableLiveData<String>()
+
     private var job = Job()
 
     fun fetchLog(){
@@ -29,6 +31,22 @@ class LogViewModel(application: Application): AndroidViewModel(application), Cor
         launch {
             val db = buildDB(getApplication())
             currentCaloriesLD.value = db.FJournalDao().getCurrentCalories(SimpleDateFormat("dd").format(Date()))
+        }
+    }
+
+    fun getStatus(){
+        launch {
+            val db = buildDB(getApplication())
+            val currCalories = db.FJournalDao().getCurrentCalories(SimpleDateFormat("dd").format(Date()))
+            val target = db.FJournalDao().selectUser().target
+
+            if(currCalories > target){
+                statusLD.value = "EXCEED"
+            }else if(currCalories > 0.51 * target){
+                statusLD.value = "NORMAL"
+            } else if(currCalories < 0.50 * target){
+                statusLD.value = "LOW"
+            }
         }
     }
 

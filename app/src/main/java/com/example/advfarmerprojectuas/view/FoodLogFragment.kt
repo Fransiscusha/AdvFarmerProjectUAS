@@ -43,6 +43,8 @@ class FoodLogFragment : Fragment(), LogAMealListener {
 
         logViewModel = ViewModelProvider(this).get(LogViewModel::class.java)
         logViewModel.fetchLog()
+        logViewModel.getCurrentCalories()
+        logViewModel.getStatus()
 
         recViewLog.layoutManager = LinearLayoutManager(context)
         recViewLog.adapter = foodLogListAdapter
@@ -56,6 +58,12 @@ class FoodLogFragment : Fragment(), LogAMealListener {
         })
         logViewModel.logLD.observe(viewLifecycleOwner, Observer {
             foodLogListAdapter.updateLogList(it)
+        })
+        logViewModel.currentCaloriesLD.observe(viewLifecycleOwner, Observer {
+            dataBinding.currentcalories = it
+        })
+        logViewModel.statusLD.observe(viewLifecycleOwner, Observer {
+            dataBinding.status = it
         })
     }
 

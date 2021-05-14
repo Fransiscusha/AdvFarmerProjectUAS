@@ -6,6 +6,8 @@
         <import type="com.example.advfarmerprojectuas.util.UtilKt" />
         <variable name="user" type="com.example.advfarmerprojectuas.model.User" />
         <variable name="fablistener" type="com.example.advfarmerprojectuas.view.LogAMealListener" />
+        <variable name="currentcalories" type="Integer" />
+        <variable name="status" type="String" />
     </data>
 <FrameLayout
     android:layout_width="match_parent"
@@ -127,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
-                    android:text="@string/foodlogstatus"
+                    android:text="@{status}"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -142,7 +144,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="24dp"
                     android:max="@{user.target}"
-                    android:progress="40"
+                    android:progress="@{currentcalories}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtFoodLogCalories" />
@@ -153,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginBottom="16dp"
-                    android:text="@string/foodlogcalprogress"
+                    android:text="@{String.valueOf(currentcalories)}"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

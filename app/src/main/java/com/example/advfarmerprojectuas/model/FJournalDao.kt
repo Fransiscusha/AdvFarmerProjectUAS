@@ -21,4 +21,5 @@ interface FJournalDao {
 
     @Query("SELECT SUM(kalori) FROM log WHERE tanggal= :tanggal")
     suspend fun  getCurrentCalories(tanggal: String): Int
+
 }
