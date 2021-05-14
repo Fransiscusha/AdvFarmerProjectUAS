@@ -12,4 +12,13 @@
     <string name="foodlogcalprogress">0 Cal</string>
     <string name="foodlogcaltarget">0000 Cal</string>
     <string name="foodlog">Food Log</string>
+    <string name="foodreport">Food Journal Report</string>
+    <string name="reportBulan">Bulan Tahun</string>
+    <string name="reportitemdate">1 May 2020</string>
+    <string name="reportitemmeal">6 meals</string>
+    <string name="reportitemcal">(3300 cal)</string>
+    <string name="reportitemstatustitle">Status</string>
+    <string name="reportitemstatus">EXCEED</string>
+    <string name="foodlogitemmeal">Meal Name</string>
+    <string name="foodlogitemcal">000 Cal</string>
 </resources>
