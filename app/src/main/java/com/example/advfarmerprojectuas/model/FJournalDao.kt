@@ -13,4 +13,6 @@ interface FJournalDao {
     @Query("SELECT * FROM user LIMIT 1")
     suspend fun selectUser():User
 
+    @Query("SELECT tanggal, SUM(kalori) , count(kalori) FROM log where tanggal = :tgl GROUP BY tanggal ")
+    suspend fun selectReport(tgl:String):List<Report>
 }
