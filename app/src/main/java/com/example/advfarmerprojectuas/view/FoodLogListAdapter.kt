@@ -25,5 +25,10 @@ class FoodLogListAdapter(val logList:ArrayList<Log>):RecyclerView.Adapter<FoodLo
         return logList.size
     }
 
+    fun updateLogList(newLogList:List<Log>){
+        logList.clear()
+        logList.addAll(newLogList)
+        notifyDataSetChanged()
+    }
 
 }

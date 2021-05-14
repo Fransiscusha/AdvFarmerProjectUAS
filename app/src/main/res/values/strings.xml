@@ -39,4 +39,8 @@
     <string name="foodlogitemcal">000 Cal</string>
     <string name="profiletitle">User Profile</string>
     <string name="profileupdate">Update Profile</string>
+    <array name="genderList">
+        <item name="Male">Male</item>
+        <item name="Female">Female</item>
+    </array>
 </resources>
