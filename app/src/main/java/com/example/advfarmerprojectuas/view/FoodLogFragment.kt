@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.advfarmerprojectuas.R
 import com.example.advfarmerprojectuas.databinding.FragmentFoodLogBinding
 import com.example.advfarmerprojectuas.viewmodel.LogViewModel
 import com.example.advfarmerprojectuas.viewmodel.UserViewModel
 
-class FoodLogFragment : Fragment() {
+class FoodLogFragment : Fragment(), LogAMealListener {
     private lateinit var userViewModel:UserViewModel
     private lateinit var logViewModel:LogViewModel
     private lateinit var dataBinding:FragmentFoodLogBinding
@@ -30,6 +31,8 @@ class FoodLogFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        dataBinding.fablistener = this
+
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.fetchUser()
 
@@ -40,5 +43,10 @@ class FoodLogFragment : Fragment() {
         userViewModel.userLD.observe(viewLifecycleOwner, Observer {
             dataBinding.user = it
         })
+    }
+
+    override fun onLogAMeal(v: View) {
+        val action = FoodLogFragmentDirections.actionMealFragment()
+        Navigation.findNavController(v).navigate(action)
     }
 }

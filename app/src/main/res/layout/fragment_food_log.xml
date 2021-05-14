@@ -5,6 +5,7 @@
     <data>
         <import type="com.example.advfarmerprojectuas.util.UtilKt" />
         <variable name="user" type="com.example.advfarmerprojectuas.model.User" />
+        <variable name="fablistener" type="com.example.advfarmerprojectuas.view.LogAMealListener" />
     </data>
 <FrameLayout
     android:layout_width="match_parent"
@@ -164,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="16dp"
-                    android:text="@{Double.toString(user.target)}"
+                    android:text="@{user.target + ` Cal`}"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -190,6 +191,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:clickable="true"
+            android:onClick="@{fablistener::onLogAMeal}"
             android:src="@drawable/ic_baseline_add_24"
             android:tint="@color/white"
             app:elevation="10dp"
