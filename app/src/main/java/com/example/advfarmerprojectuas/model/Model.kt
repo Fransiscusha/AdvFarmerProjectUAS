@@ -13,7 +13,7 @@ data class User(
     var weight:Int,
     var height:Int,
     var pgoal:String,
-    var target: Double,
+    var target: Int,
 ){
     @PrimaryKey(autoGenerate = true)
     var uuid:Int = 0

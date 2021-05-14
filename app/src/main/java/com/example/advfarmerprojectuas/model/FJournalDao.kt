@@ -11,6 +11,6 @@ interface FJournalDao {
     suspend fun insertAll(vararg user:User)
 
     @Query("SELECT * FROM user LIMIT 1")
-    suspend fun selectUser():List<User>
+    suspend fun selectUser():User
 
 }

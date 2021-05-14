@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class UserViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
-    val userLD = MutableLiveData<List<User>>()
+    val userLD = MutableLiveData<User>()
     private var job = Job()
 
     fun addUser(user: User){
