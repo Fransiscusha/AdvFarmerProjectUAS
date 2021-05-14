@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/foodLog">
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.advfarmerprojectuas.view.WelcomeFragment"
+        android:label="Welcome"
+        tools:layout="@layout/fragment_welcome">
+        <action
+            android:id="@+id/actionFoodLog"
+            app:destination="@id/foodLog" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.advfarmerprojectuas.view.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/foodLog"
+        android:name="com.example.advfarmerprojectuas.view.FoodLogFragment"
+        android:label="Food Journal"
+        tools:layout="@layout/fragment_food_log">
+        <action
+            android:id="@+id/actionMealFragment"
+            app:destination="@id/mealFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/report"
+        android:name="com.example.advfarmerprojectuas.view.ReportFragment"
+        android:label="Report"
+        tools:layout="@layout/fragment_report" />
+    <fragment
+        android:id="@+id/mealFragment"
+        android:name="com.example.advfarmerprojectuas.view.MealFragment"
+        android:label="Log A Meal"
+        tools:layout="@layout/fragment_meal" />
+</navigation>
