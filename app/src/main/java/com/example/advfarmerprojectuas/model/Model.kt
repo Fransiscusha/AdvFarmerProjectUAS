@@ -2,6 +2,8 @@ package com.example.advfarmerprojectuas.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Entity
 data class User(
