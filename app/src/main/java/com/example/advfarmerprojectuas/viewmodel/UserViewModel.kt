@@ -29,6 +29,10 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
         }
     }
 
+    fun update(nama:String, umur:Int, gender:String, weight:Int, height:Int) {
+
+    }
+
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.Main
