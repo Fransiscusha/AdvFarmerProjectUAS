@@ -2,4 +2,11 @@
     <string name="app_name">AdvFarmerProjectUAS</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="foodreport">Food Journal Report</string>
+    <string name="reportBulan">Bulan Tahun</string>
+    <string name="reportitemdate">1 May 2020</string>
+    <string name="reportitemmeal">6 meals</string>
+    <string name="reportitemcal">(3300 cal)</string>
+    <string name="reportitemstatustitle">Status</string>
+    <string name="reportitemstatus">EXCEED</string>
 </resources>
