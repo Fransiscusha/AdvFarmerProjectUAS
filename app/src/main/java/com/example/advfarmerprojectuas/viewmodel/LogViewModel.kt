@@ -36,21 +36,21 @@ class LogViewModel(application: Application): AndroidViewModel(application), Cor
     fun fetchLog(){
         launch {
             val db = buildDB(getApplication())
-            logLD.value = db.FJournalDao().selectLog(SimpleDateFormat("dd").format(Date()))
+            logLD.value = db.FJournalDao().selectLog(SimpleDateFormat("d MMMM yyyy").format(Date()))
         }
     }
 
     fun getCurrentCalories(){
         launch {
             val db = buildDB(getApplication())
-            currentCaloriesLD.value = if (db.FJournalDao().getCurrentCalories(SimpleDateFormat("dd").format(Date())) == null) 0 else db.FJournalDao().getCurrentCalories(SimpleDateFormat("dd").format(Date()))
+            currentCaloriesLD.value = if (db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date())) == null) 0 else db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date()))
         }
     }
 
     fun getStatus(){
         launch {
             val db = buildDB(getApplication())
-            val currCalories = if (db.FJournalDao().getCurrentCalories(SimpleDateFormat("dd").format(Date())) == null) 0 else db.FJournalDao().getCurrentCalories(SimpleDateFormat("dd").format(Date()))
+            val currCalories = if (db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date())) == null) 0 else db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date()))
             //val target = db.FJournalDao().selectUser().target
             val target = 100
 
