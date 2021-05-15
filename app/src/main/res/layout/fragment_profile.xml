@@ -9,7 +9,9 @@
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ProfileFragment">
+    tools:context=".view.ProfileFragment"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

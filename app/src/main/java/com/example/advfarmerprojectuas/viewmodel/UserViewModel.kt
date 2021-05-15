@@ -18,20 +18,7 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
     private var job = Job()
 
     fun addUser(user: User){
-        var bmr = 0.0;
-        if (user.gender == 0) {
-            bmr = (13.97 * user.weight) + (4.799 * user.height) - (5.677 * user.umur) + 88.362
-        } else {
-            bmr = (9.247 * user.weight) + (3.098 * user.height) - (4.330 * user.umur) + 447.593
-        }
-
-        if (user.pgoal == "Maintain") {
-            user.target = bmr.toInt()
-        } else if (user.pgoal == "Gain") {
-            user.target = (bmr + (bmr * 15/ 100)).toInt()
-        } else if (user.pgoal == "Loss") {
-            user.target = (bmr - (bmr * 15 / 100)).toInt()
-        }
+        user.target = updateTarget(user.gender, user.weight, user.height, user.umur, user.pgoal)
 
         launch {
             val db = buildDB(getApplication())
@@ -58,11 +45,30 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
         }
     }
 
-    fun updateUserProfile(nama:String, umur:Int, gender:Int, weight:Int, height:Int, uuid:Int) {
+    fun updateUserProfile(nama:String, umur:Int, gender:Int, weight:Int, height:Int, pgoal:String, uuid:Int) {
+        val target = updateTarget(gender, weight, height, umur, pgoal)
         launch {
             val db = buildDB(getApplication())
-            db.FJournalDao().updateUserProfile(nama, umur, gender, weight, height, uuid)
+            db.FJournalDao().updateUserProfile(nama, umur, gender, weight, height, target, uuid)
         }
+    }
+
+    fun updateTarget(gender:Int, weight:Int, height:Int, umur: Int, pgoal:String):Int {
+        var bmr = 0.0;
+        if (gender == 0) {
+            bmr = (13.97 * weight) + (4.799 * height) - (5.677 * umur) + 88.362
+        } else {
+            bmr = (9.247 * weight) + (3.098 * height) - (4.330 * umur) + 447.593
+        }
+        var target = 0;
+        if (pgoal == "Maintain") {
+            target = bmr.toInt()
+        } else if (pgoal == "Gain") {
+            target = (bmr + (bmr * 15/ 100)).toInt()
+        } else if (pgoal == "Loss") {
+            target = (bmr - (bmr * 15 / 100)).toInt()
+        }
+        return target
     }
 
 
