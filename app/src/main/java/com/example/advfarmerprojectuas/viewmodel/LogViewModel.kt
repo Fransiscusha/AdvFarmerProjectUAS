@@ -62,8 +62,7 @@ class LogViewModel(application: Application): AndroidViewModel(application), Cor
         launch {
             val db = buildDB(getApplication())
             val currCalories = if (db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date())) == null) 0 else db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date()))
-            //val target = db.FJournalDao().selectUser().target
-            val target = 100
+            val target = db.FJournalDao().selectUser().target
 
             when{
                 currCalories > target -> statusLD.value = "EXCEED"
