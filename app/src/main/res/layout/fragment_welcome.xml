@@ -186,6 +186,7 @@
                             android:id="@+id/radioMaintain"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:checked="true"
                             android:onClick="@{(view)->radiolistener.onAgeRadioClick(view, user)}"
                             android:tag="Maintain"
                             android:text="@string/maintain" />

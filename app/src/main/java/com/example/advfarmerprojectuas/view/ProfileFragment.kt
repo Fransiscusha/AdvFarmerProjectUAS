@@ -46,7 +46,13 @@ class ProfileFragment : Fragment(), UserSaveProfileListener {
     }
 
     override fun onUserSaveProfile(v: View, obj: User) {
-        viewModel.updateUserProfile(obj.nama, obj.umur, obj.gender, obj.weight, obj.height, obj.pgoal, obj.uuid)
-        Toast.makeText(v.context, "profile updated", Toast.LENGTH_SHORT).show()
+        with(obj){
+            if(nama == "" || umur <= 0 || umur == null || weight <= 0 || weight == null || height <= 0 || height == null ){
+                Toast.makeText(v.context,"Semua input harus diisi dengan benar !!",Toast.LENGTH_SHORT).show()
+            }else{
+                viewModel.updateUserProfile(obj.nama, obj.umur, obj.gender, obj.weight, obj.height, obj.pgoal, obj.uuid)
+                Toast.makeText(v.context, "profile updated", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
