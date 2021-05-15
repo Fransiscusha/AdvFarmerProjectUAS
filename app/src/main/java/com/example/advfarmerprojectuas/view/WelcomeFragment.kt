@@ -18,6 +18,7 @@ import com.example.advfarmerprojectuas.viewmodel.UserViewModel
 class WelcomeFragment : Fragment(), AgeRadioClickListener, CreateUserClickListener {
     private lateinit var viewModel:UserViewModel
     private lateinit var dataBinding:FragmentWelcomeBinding
+    private lateinit var v: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +34,7 @@ class WelcomeFragment : Fragment(), AgeRadioClickListener, CreateUserClickListen
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         viewModel.welcomeUserCheck()
-
+        v = view
         dataBinding.listener = this
         dataBinding.radiolistener = this
 
@@ -49,7 +50,8 @@ class WelcomeFragment : Fragment(), AgeRadioClickListener, CreateUserClickListen
             if (it){
                 dataBinding.user = User("", 0, 0, 0,0, "", 0)
             } else {
-                
+                val action = WelcomeFragmentDirections.actionFoodLog()
+                Navigation.findNavController(v).navigate(action)
             }
         })
     }
