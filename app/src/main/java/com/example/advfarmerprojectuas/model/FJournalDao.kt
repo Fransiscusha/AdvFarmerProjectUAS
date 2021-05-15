@@ -25,7 +25,7 @@ interface FJournalDao {
     @Query("SELECT SUM(kalori) FROM log WHERE tanggal= :tanggal")
     suspend fun  getCurrentCalories(tanggal: String): Int
 
-    @Query("SELECT tanggal, SUM(kalori) , count(kalori) FROM log where tanggal LIKE :tgl GROUP BY tanggal ")
+    @Query("SELECT tanggal, SUM(kalori) AS 'jCal' , count(kalori) AS 'jMeal' FROM log where tanggal LIKE +:tgl GROUP BY tanggal ")
     suspend fun selectReport(tgl:String):List<Report>
 
 }

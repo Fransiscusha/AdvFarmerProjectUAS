@@ -1,6 +1,7 @@
 package com.example.advfarmerprojectuas.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,6 +47,7 @@ class ReportFragment : Fragment() {
     fun observeViewModel(){
         viewModel.reportLD.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             reportListAdapter.updateReportList(it)
+            Log.d("cekrf",it.toString())
         })
     }
 }

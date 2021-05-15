@@ -35,17 +35,14 @@ class MainActivity : AppCompatActivity(){
                 dataBinding.visible = View.VISIBLE
             }
         }
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.profile))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.profile,R.id.welcomeFragment,R.id.foodLog,R.id.report))
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         bottomNav.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        if(navController.currentDestination?.id == R.id.mealFragment){
-            return NavigationUI.navigateUp(navController, null)
-        }
-        else{
-            return onNavigateUp()
-        }
+
+        return NavigationUI.navigateUp(navController, null) || super.onSupportNavigateUp()
+
     }
 }
