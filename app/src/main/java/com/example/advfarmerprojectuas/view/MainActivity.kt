@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.advfarmerprojectuas.R
@@ -34,7 +35,8 @@ class MainActivity : AppCompatActivity(){
                 dataBinding.visible = View.VISIBLE
             }
         }
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.profile))
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
         bottomNav.setupWithNavController(navController)
     }
 
