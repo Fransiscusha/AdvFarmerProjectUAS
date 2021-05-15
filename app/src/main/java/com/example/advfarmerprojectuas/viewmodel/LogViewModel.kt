@@ -21,9 +21,13 @@ class LogViewModel(application: Application): AndroidViewModel(application), Cor
 
     private var job = Job()
 
+    fun declareLog() {
+        slogLd.value = Log("", "", 0.0)
+    }
+
     fun addLog(nama:String, cal:Double){
-        val log = Log(SimpleDateFormat("yyyy mm dd").format(Date()), nama, cal)
         launch {
+            val log = Log(SimpleDateFormat("d MMMM yyyy").format(Date()), nama, cal)
             val db = buildDB(getApplication())
             db.FJournalDao().insertLogMeal(log)
         }

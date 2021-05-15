@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,8 @@ import com.example.advfarmerprojectuas.databinding.FragmentWelcomeBinding
 import com.example.advfarmerprojectuas.model.Log
 import com.example.advfarmerprojectuas.viewmodel.LogViewModel
 import com.example.advfarmerprojectuas.viewmodel.UserViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MealFragment : Fragment(), CreateLogCliclListener {
     private lateinit var viewModel:UserViewModel
@@ -33,8 +36,10 @@ class MealFragment : Fragment(), CreateLogCliclListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        viewModel.fetchUser()
 
         logViewModel = ViewModelProvider(this).get(LogViewModel::class.java)
+        logViewModel.declareLog()
         logViewModel.getCurrentCalories()
 
         dataBinding.listener = this
@@ -54,5 +59,6 @@ class MealFragment : Fragment(), CreateLogCliclListener {
 
     override fun onCreateLogClick(v: View, obj: Log) {
         logViewModel.addLog(obj.nama, obj.kalori)
+        Toast.makeText(v.context, "Log added", Toast.LENGTH_SHORT).show()
     }
 }
