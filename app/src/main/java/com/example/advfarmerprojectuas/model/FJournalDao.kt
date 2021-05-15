@@ -10,6 +10,9 @@ interface FJournalDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(vararg user:User)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertLogMeal(vararg log:Log)
+
     @Query("SELECT * FROM user LIMIT 1")
     suspend fun selectUser():User
 

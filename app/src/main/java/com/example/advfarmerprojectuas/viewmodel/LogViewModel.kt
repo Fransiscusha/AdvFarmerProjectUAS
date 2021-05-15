@@ -15,10 +15,19 @@ import kotlin.coroutines.CoroutineContext
 
 class LogViewModel(application: Application): AndroidViewModel(application), CoroutineScope {
     val logLD = MutableLiveData<List<Log>>()
+    val slogLd = MutableLiveData<Log>()
     val currentCaloriesLD = MutableLiveData<Int>()
     val statusLD = MutableLiveData<String>()
 
     private var job = Job()
+
+    fun addLog(nama:String, cal:Double){
+        val log = Log(SimpleDateFormat("yyyy mm dd").format(Date()), nama, cal)
+        launch {
+            val db = buildDB(getApplication())
+            db.FJournalDao().insertLogMeal(log)
+        }
+    }
 
     fun fetchLog(){
         launch {

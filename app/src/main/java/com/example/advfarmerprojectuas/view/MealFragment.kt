@@ -5,56 +5,54 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.advfarmerprojectuas.R
+import com.example.advfarmerprojectuas.databinding.FragmentMealBinding
+import com.example.advfarmerprojectuas.databinding.FragmentWelcomeBinding
+import com.example.advfarmerprojectuas.model.Log
+import com.example.advfarmerprojectuas.viewmodel.LogViewModel
+import com.example.advfarmerprojectuas.viewmodel.UserViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MealFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MealFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+class MealFragment : Fragment(), CreateLogCliclListener {
+    private lateinit var viewModel:UserViewModel
+    private lateinit var logViewModel:LogViewModel
+    private lateinit var dataBinding:FragmentMealBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_meal, container, false)
+        // return inflater.inflate(R.layout.fragment_meal, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentMealBinding>(inflater, R.layout.fragment_meal, container, false)
+        return dataBinding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MealFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MealFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+
+        logViewModel = ViewModelProvider(this).get(LogViewModel::class.java)
+        logViewModel.getCurrentCalories()
+
+        dataBinding.listener = this
+
+        observeViewModel()
+    }
+
+    fun observeViewModel() {
+        logViewModel.slogLd.observe(viewLifecycleOwner, Observer {
+            dataBinding.log = it
+        })
+
+        logViewModel.currentCaloriesLD.observe(viewLifecycleOwner, Observer {
+            dataBinding.currentcalories = it
+        })
+    }
+
+    override fun onCreateLogClick(v: View, obj: Log) {
+        logViewModel.addLog(obj.nama, obj.kalori)
     }
 }

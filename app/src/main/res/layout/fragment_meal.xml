@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="log" type="com.example.advfarmerprojectuas.model.Log" />
+        <variable name="listener" type="com.example.advfarmerprojectuas.view.CreateLogCliclListener" />
+        <variable name="currentcalories" type="Integer" />
     </data>
 <FrameLayout
     android:layout_width="match_parent"
@@ -34,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@string/calories"
+            android:text="@{String.valueOf(currentcalories)}"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,6 +125,7 @@
                     android:backgroundTint="@color/teal_200"
                     android:text="@string/logmeal"
                     android:textColor="@color/black"
+                    android:onClick="@{(view)->listener.onCreateLogClick(view, log)}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
