@@ -18,6 +18,21 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
     private var job = Job()
 
     fun addUser(user: User){
+        var bmr = 0.0;
+        if (user.gender == 0) {
+            bmr = (13.97 * user.weight) + (4.799 * user.height) - (5.677 * user.umur) + 88.362
+        } else {
+            bmr = (9.247 * user.weight) + (3.098 * user.height) - (4.330 * user.umur) + 447.593
+        }
+
+        if (user.pgoal == "Maintain") {
+            user.target = bmr.toInt()
+        } else if (user.pgoal == "Gain") {
+            user.target = (bmr + (bmr * 15/ 100)).toInt()
+        } else if (user.pgoal == "Loss") {
+            user.target = (bmr - (bmr * 15 / 100)).toInt()
+        }
+
         launch {
             val db = buildDB(getApplication())
             db.FJournalDao().insertAll(user)
