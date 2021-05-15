@@ -136,7 +136,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:entries="@array/genderList"
-                        android:selectedItemPosition="@={user.umur}"
+                        android:selectedItemPosition="@={user.gender}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/guideline2"
                         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />

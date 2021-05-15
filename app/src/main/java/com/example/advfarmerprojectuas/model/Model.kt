@@ -9,7 +9,7 @@ import java.util.*
 data class User(
     var nama:String,
     var umur:Int,
-    var gender:String,
+    var gender:Int,
     var weight:Int,
     var height:Int,
     var pgoal:String,

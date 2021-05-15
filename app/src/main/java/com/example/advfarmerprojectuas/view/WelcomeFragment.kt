@@ -47,7 +47,7 @@ class WelcomeFragment : Fragment(), AgeRadioClickListener, CreateUserClickListen
 
         viewModel.welcomeLD.observe(viewLifecycleOwner, Observer {
             if (it){
-                dataBinding.user = User("", 0, "", 0,0, "", 0)
+                dataBinding.user = User("", 0, 0, 0,0, "", 0)
             } else {
                 
             }

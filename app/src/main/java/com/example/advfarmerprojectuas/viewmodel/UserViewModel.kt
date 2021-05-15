@@ -43,7 +43,7 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
         }
     }
 
-    fun updateUserProfile(nama:String, umur:Int, gender:String, weight:Int, height:Int, uuid:Int) {
+    fun updateUserProfile(nama:String, umur:Int, gender:Int, weight:Int, height:Int, uuid:Int) {
         launch {
             val db = buildDB(getApplication())
             db.FJournalDao().updateUserProfile(nama, umur, gender, weight, height, uuid)
