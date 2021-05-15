@@ -58,6 +58,9 @@ class FoodLogFragment : Fragment(), LogAMealListener {
         })
         logViewModel.logLD.observe(viewLifecycleOwner, Observer {
             foodLogListAdapter.updateLogList(it)
+            with(foodLogTextNoData){
+                visibility = if(it.isEmpty()) View.VISIBLE else View.GONE
+            }
         })
         logViewModel.currentCaloriesLD.observe(viewLifecycleOwner, Observer {
             dataBinding.currentcalories = it
