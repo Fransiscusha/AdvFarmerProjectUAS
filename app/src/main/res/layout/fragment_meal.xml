@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="com.example.advfarmerprojectuas.util.UtilKt" />
         <variable name="log" type="com.example.advfarmerprojectuas.model.Log" />
         <variable name="listener" type="com.example.advfarmerprojectuas.view.CreateLogCliclListener" />
         <variable name="currentcalories" type="Integer" />
@@ -25,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:text="@string/date"
+            android:text="@{UtilKt.getCurrentDate}"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@{String.valueOf(currentcalories)}"
+            android:text="@{String.valueOf(currentcalories) + ` Cal`}"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
