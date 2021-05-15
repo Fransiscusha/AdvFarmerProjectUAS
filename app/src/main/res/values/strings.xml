@@ -18,7 +18,8 @@
     <string name="whatfood">What you Eat?</string>
     <string name="calorieadd">Calorie Approx</string>
     <string name="logmeal">Log This Meal</string>
-    <string name="foodloguserdetails">Gender, 00 years old</string>
+    <string name="foodlogusergender">Gender</string>
+    <string name="foodloguserage">, 00 years old</string>
     <string name="foodlogusername">User Name</string>
     <string name="foodlogdate">Day Month Year</string>
     <string name="foodlogdailyenergyintake">Daily Energy Intake</string>
@@ -39,6 +40,7 @@
     <string name="foodlogitemcal">000 Cal</string>
     <string name="profiletitle">User Profile</string>
     <string name="profileupdate">Update Profile</string>
+    <string name="nofoodlog">You Don\'t Have A Food Log Yet</string>
     <array name="genderList">
         <item name="Male">Male</item>
         <item name="Female">Female</item>
