@@ -40,7 +40,7 @@ class MealFragment : Fragment(), CreateLogCliclListener {
 
         logViewModel = ViewModelProvider(this).get(LogViewModel::class.java)
         logViewModel.declareLog()
-        logViewModel.getCurrentCalories()
+        logViewModel.getNeedCalories()
 
         dataBinding.listener = this
 
@@ -48,12 +48,12 @@ class MealFragment : Fragment(), CreateLogCliclListener {
     }
 
     fun observeViewModel() {
-        logViewModel.slogLd.observe(viewLifecycleOwner, Observer {
-            dataBinding.log = it
+        logViewModel.needCaloriesLD.observe(viewLifecycleOwner, Observer {
+            dataBinding.needCalories = it
         })
 
-        logViewModel.currentCaloriesLD.observe(viewLifecycleOwner, Observer {
-            dataBinding.currentcalories = it
+        logViewModel.slogLd.observe(viewLifecycleOwner, Observer {
+            dataBinding.log = it
         })
     }
 

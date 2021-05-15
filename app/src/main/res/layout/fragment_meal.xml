@@ -6,7 +6,7 @@
         <import type="com.example.advfarmerprojectuas.util.UtilKt" />
         <variable name="log" type="com.example.advfarmerprojectuas.model.Log" />
         <variable name="listener" type="com.example.advfarmerprojectuas.view.CreateLogCliclListener" />
-        <variable name="currentcalories" type="Integer" />
+        <variable name="needCalories" type="Integer" />
     </data>
 <FrameLayout
     android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@{String.valueOf(currentcalories) + ` Cal`}"
+            android:text="@{String.valueOf(needCalories) + ` Cal`}"
             android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

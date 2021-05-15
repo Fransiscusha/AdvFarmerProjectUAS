@@ -17,6 +17,7 @@ class LogViewModel(application: Application): AndroidViewModel(application), Cor
     val logLD = MutableLiveData<List<Log>>()
     val slogLd = MutableLiveData<Log>()
     val currentCaloriesLD = MutableLiveData<Int>()
+    val needCaloriesLD = MutableLiveData<Int>()
     val statusLD = MutableLiveData<String>()
 
     private var job = Job()
@@ -30,6 +31,7 @@ class LogViewModel(application: Application): AndroidViewModel(application), Cor
             val log = Log(SimpleDateFormat("d MMMM yyyy").format(Date()), nama, cal)
             val db = buildDB(getApplication())
             db.FJournalDao().insertLogMeal(log)
+            getNeedCalories()
         }
     }
 
@@ -44,6 +46,15 @@ class LogViewModel(application: Application): AndroidViewModel(application), Cor
         launch {
             val db = buildDB(getApplication())
             currentCaloriesLD.value = if (db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date())) == null) 0 else db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date()))
+        }
+    }
+
+    fun getNeedCalories() {
+        launch {
+            val db = buildDB(getApplication())
+            val currCalories = if (db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date())) == null) 0 else db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date()))
+            val target = db.FJournalDao().selectUser().target
+            needCaloriesLD.value = target - currCalories
         }
     }
 
