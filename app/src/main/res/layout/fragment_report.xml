@@ -6,6 +6,8 @@
     <variable
         name="date"
         type="com.example.advfarmerprojectuas.util.UtilKt" />
+    <variable name="vl" type="com.github.mikephil.charting.data.LineDataSet"/>
+    <variable name="maxAxis" type="String"/>
 </data>
 <FrameLayout
     android:layout_width="match_parent"
@@ -73,7 +75,7 @@
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/cardView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,6 +89,31 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="24dp"
                 android:background="@color/design_default_color_on_primary" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="0dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" >
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:padding="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:vl="@{vl}"
+            android:maxAxis="@{maxAxis}"/>
         </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

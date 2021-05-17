@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.advfarmerprojectuas.model.Report
 import com.example.advfarmerprojectuas.util.buildDB
 import com.example.advfarmerprojectuas.util.dateFormat
+import com.github.mikephil.charting.data.Entry
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -18,10 +19,12 @@ import kotlin.math.tan
 
 class ReportViewModel(application: Application): AndroidViewModel(application),CoroutineScope{
     val reportLD = MutableLiveData<List<Report>>()
+    var entriesLD = MutableLiveData<List<Entry>>()
     private var job = Job()
 
     fun refresh(){
         var tanggal = dateFormat()
+        var entry:ArrayList<Entry> = arrayListOf()
         var report:List<Report> = arrayListOf()
         var target:Int = 0
         var listDate = arrayListOf<Report>()
@@ -32,8 +35,8 @@ class ReportViewModel(application: Application): AndroidViewModel(application),C
             Log.d("cekrdb",report.toString())
             var user = db.FJournalDao().selectUser()
             target = user.target
-            var mycal = GregorianCalendar(Calendar.YEAR, Calendar.MONTH, 1)
-            var daysInMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH)
+            var calendar = Calendar.getInstance()
+            var daysInMonth = calendar.getActualMaximum(Calendar.DATE)
 
             for (i in 1..daysInMonth){
                 var ada = false
@@ -59,9 +62,11 @@ class ReportViewModel(application: Application): AndroidViewModel(application),C
                                 listDate.add(Report("$i $tanggal ", sreport.jMeal, sreport.jCal, "LOW"))
                             }
                         }
+                        entry.add(Entry(i.toFloat(), sreport.jCal.toString().toFloat()))
                     }
                     else{
                         listDate.add(sreport)
+                        entry.add(Entry(i.toFloat(), 0f))
                     }
                 } else{
                     listDate.add(Report("$i $tanggal ", 0, 0.0, "LOW"))
@@ -71,6 +76,7 @@ class ReportViewModel(application: Application): AndroidViewModel(application),C
             Log.d("cekreport",listDate.toString())
 
             reportLD.value = listDate
+            entriesLD.value = entry
         }
     }
 

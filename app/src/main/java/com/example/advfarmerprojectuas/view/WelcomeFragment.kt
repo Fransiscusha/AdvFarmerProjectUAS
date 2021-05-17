@@ -49,7 +49,7 @@ class WelcomeFragment : Fragment(), AgeRadioClickListener, CreateUserClickListen
 
         viewModel.welcomeLD.observe(viewLifecycleOwner, Observer {
             if (it){
-                dataBinding.user = User("", 0, 0, 0,0, "", 0)
+                dataBinding.user = User("", 0, 0, 0,0, "Maintain", 0)
             } else {
                 val action = WelcomeFragmentDirections.actionFoodLog()
                 Navigation.findNavController(v).navigate(action)
@@ -63,7 +63,7 @@ class WelcomeFragment : Fragment(), AgeRadioClickListener, CreateUserClickListen
 
     override fun onCreateUserClick(v: View, obj: User) {
         with(obj){
-            if(nama == "" || umur <= 0 || umur == null || weight <= 0 || weight == null || height <= 0 || height == null ){
+            if(nama == "" || umur <= 0 || umur == null || weight <= 0 || weight == null || height <= 0 || height == null){
                 Toast.makeText(v.context,"Semua input harus diisi dengan benar !!",Toast.LENGTH_SHORT).show()
             }else{
                 viewModel.addUser(obj)

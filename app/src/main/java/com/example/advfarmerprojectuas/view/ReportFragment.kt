@@ -12,6 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.advfarmerprojectuas.R
 import com.example.advfarmerprojectuas.databinding.FragmentReportBinding
 import com.example.advfarmerprojectuas.viewmodel.ReportViewModel
+import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import kotlinx.android.synthetic.main.fragment_report.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -43,11 +47,18 @@ class ReportFragment : Fragment() {
 
         recViewReport.adapter = reportListAdapter
         observeViewModel()
+
+
     }
+
     fun observeViewModel(){
         viewModel.reportLD.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             reportListAdapter.updateReportList(it)
             Log.d("cekrf",it.toString())
+        })
+        viewModel.entriesLD.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            dataBinding.vl = LineDataSet(it, "Calories")
+            dataBinding.maxAxis = it.size.toString()
         })
     }
 }
