@@ -18,7 +18,6 @@ abstract class FJournalDatabase:RoomDatabase() {
             FJournalDatabase::class.java,
             "fjournaldb"
         )
-            .addMigrations()
             .build()
 
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK){

@@ -18,7 +18,6 @@ val DB_NAME = "fjournaldb"
 
 fun buildDB(context: Context):FJournalDatabase{
     val db = Room.databaseBuilder(context, FJournalDatabase::class.java, DB_NAME)
-        .addMigrations()
         .build()
     return db
 }
