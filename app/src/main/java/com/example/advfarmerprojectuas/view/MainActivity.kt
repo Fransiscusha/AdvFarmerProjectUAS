@@ -2,7 +2,9 @@ package com.example.advfarmerprojectuas.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -44,5 +46,19 @@ class MainActivity : AppCompatActivity(){
 
         return NavigationUI.navigateUp(navController, null) || super.onSupportNavigateUp()
 
+    }
+
+    private var doubleBackToExitPressedOnce = false
+    override fun onBackPressed() {
+        if(navController.currentDestination?.id == R.id.foodLog || navController.currentDestination?.id == R.id.welcomeFragment){
+            if (doubleBackToExitPressedOnce) {
+                finish()
+            }
+            this.doubleBackToExitPressedOnce = true
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+        }else{
+            super.onBackPressed()
+            this.doubleBackToExitPressedOnce = false
+        }
     }
 }

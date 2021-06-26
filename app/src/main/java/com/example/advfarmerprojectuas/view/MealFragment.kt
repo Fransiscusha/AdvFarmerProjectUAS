@@ -59,7 +59,7 @@ class MealFragment : Fragment(), CreateLogCliclListener {
 
     override fun onCreateLogClick(v: View, obj: Log) {
         with(obj) {
-            if (nama == "" || kalori == null || kalori <= 0) {
+            if (nama == "" || kalori.toString() == "" || kalori <= 0) {
                 Toast.makeText(v.context, "Semua input harus diisi dengan benar !!", Toast.LENGTH_SHORT).show()
             } else {
                 logViewModel.addLog(obj.nama, obj.kalori)
