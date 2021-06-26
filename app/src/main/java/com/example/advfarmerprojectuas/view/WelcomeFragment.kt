@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.advfarmerprojectuas.R
 import com.example.advfarmerprojectuas.databinding.FragmentWelcomeBinding
 import com.example.advfarmerprojectuas.model.User
@@ -33,6 +34,7 @@ class WelcomeFragment : Fragment(), AgeRadioClickListener, CreateUserClickListen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         viewModel.welcomeUserCheck()
         v = view
@@ -56,6 +58,7 @@ class WelcomeFragment : Fragment(), AgeRadioClickListener, CreateUserClickListen
             }
         })
     }
+
 
     override fun onAgeRadioClick(v: View, obj: User) {
         obj.pgoal = v.tag.toString()

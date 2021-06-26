@@ -54,7 +54,7 @@ class LogViewModel(application: Application): AndroidViewModel(application), Cor
             val db = buildDB(getApplication())
             val currCalories = if (db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date())) == null) 0 else db.FJournalDao().getCurrentCalories(SimpleDateFormat("d MMMM yyyy").format(Date()))
             val target = db.FJournalDao().selectUser().target
-            needCaloriesLD.value = target - currCalories
+            needCaloriesLD.value = if ((target - currCalories) < 0) 0 else (target - currCalories)
         }
     }
 
